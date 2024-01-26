@@ -1,4 +1,4 @@
-First command:
+First command:/n
     node index.js --action list
 ![1](https://github.com/TomaszAndrzejPawlowski/goit-nodejs-hw-01/assets/43783724/a1cb7eeb-2ed7-4bc1-b560-a5ed4a9cdf9e)
 
