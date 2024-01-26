@@ -1,0 +1,25 @@
+{
+  "name": "goit-node-hw-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "start:dev": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomaszAndrzejPawlowski/goit-nodejs-hw-01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/TomaszAndrzejPawlowski/goit-nodejs-hw-01.git#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "uuidv4": "^6.2.13"
+  }
+}
