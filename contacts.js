@@ -12,72 +12,61 @@ function listContacts() {
       console.log(err.message);
     } else {
       console.table(JSON.parse(data));
+      return;
     }
   });
 }
 
 function getContactById(contactId) {
-  try {
-    fs.readFile(contactsPath, "utf8", (err, data) => {
-      if (err) {
-        console.log(err.message);
-      } else {
-        const contacts = JSON.parse(data);
-        const index = contacts.findIndex((contact) => contact.id === contactId);
-        console.table(contacts[index]);
-      }
-    });
-  } catch (err) {
-    console.log(err.message);
-  }
+  fs.readFile(contactsPath, "utf8", (err, data) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      const contacts = JSON.parse(data);
+      const index = contacts.findIndex((contact) => contact.id === contactId);
+      return console.table(contacts[index]);
+    }
+  });
 }
 
 function removeContact(contactId) {
-  try {
-    fs.readFile(contactsPath, "utf8", (err, data) => {
-      if (err) {
-        console.log(err.message);
-      } else {
-        const contactsList = JSON.parse(data);
-        const index = contactsList.findIndex(
-          (contact) => contact.id === contactId
-        );
-        contactsList.splice(index, 1);
-        const contactsListStr = JSON.stringify(contactsList);
-        fs.writeFile(contactsPath, contactsListStr, (err) => {
-          if (err) console.log(err);
-        });
-      }
-    });
-  } catch (err) {
-    console.log(err.message);
-  }
+  fs.readFile(contactsPath, "utf8", (err, data) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      const contactsList = JSON.parse(data);
+      const index = contactsList.findIndex(
+        (contact) => contact.id === contactId
+      );
+      contactsList.splice(index, 1);
+      const contactsListStr = JSON.stringify(contactsList);
+      fs.writeFile(contactsPath, contactsListStr, (err) => {
+        if (err) console.log(err);
+      });
+    }
+  });
 }
 
 function addContact(name, email, phone) {
-  try {
-    fs.readFile(contactsPath, "utf8", (err, data) => {
-      if (err) {
-        console.log(err.message);
-      } else {
-        const newContact = {
-          id: v4(),
-          name,
-          email,
-          phone,
-        };
-        const contactsList = JSON.parse(data);
-        contactsList.push(newContact);
-        const newContactsStr = JSON.stringify(contactsList);
+  fs.readFile(contactsPath, "utf8", (err, data) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      const newContact = {
+        id: v4(),
+        name,
+        email,
+        phone,
+      };
+      const contactsList = JSON.parse(data);
+      contactsList.push(newContact);
+      const newContactsStr = JSON.stringify(contactsList);
 
-        fs.writeFile(contactsPath, newContactsStr, (err) => {
-          if (err) console.log(err);
-        });
-      }
-    });
-  } catch (err) {
-    console.log(err.message);
-  }
+      fs.writeFile(contactsPath, newContactsStr, (err) => {
+        if (err) console.log(err);
+      });
+    }
+  });
 }
 
 module.exports = {
